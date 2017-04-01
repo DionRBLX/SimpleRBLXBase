@@ -4,6 +4,7 @@
 #include <TCHAR.h>
 #include <string>
 #include <sstream>
+#include "/COSTUM/costumfunc.cpp"
 
 //Here is where the hax begin 
 
@@ -35,31 +36,22 @@ DWORD GetModuleBaseAddress(DWORD dwProcessIdentifier, TCHAR *lpszModuleName)
     return dwModuleBaseAddress;
 }
 
-//Costum function for you guys to sleep a thread
-	int sleepthread(int amountoftime) {
-		SetConsoleTitle("Thread is sleeping for " + amtTime + " ;*"); 
-		Sleep(amountoftime);
-	}
 
 int Main() {
 //Here is where the magic starts
 HWND hWnd = FindWindow(0, "ROBLOX"); //Finding RBLX window this is a low quality process if you know how to code and use this i recommened you to change this
+
 std::cout << "Waiting for Roblox...";
 while (hWnd == 0) { // Waiting until found
         Sleep(250);
         hWnd = FindWindow(0, "ROBLOX");
        
+}
 
-    }
-    
-    system("cls");//making this better later
-        //Definition of pId
-        DWORD pId;
-    //Get process id
-    GetWindowThreadProcessId(hWnd, &pId);
-    
-    //Here is where we start getting the modulebase
-     DWORD RBLXBASEAddr = GetModuleBaseAddress(pId, "RobloxPlayerBeta.exe"); // Getting base address of GD
+     system("cls");
+     DWORD pId;
+     GetWindowThreadProcessId(hWnd, &pId);
+     DWORD RBLXBASEAddr = GetModuleBaseAddress(pId, "RobloxPlayerBeta.exe"); 
      std::cout << "Base Address: " << hex << GetModuleBaseAddress(;
 
   return 0;                                                                
